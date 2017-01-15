@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.hadizadeh.positioning.modeleditor.model.BorderedTitledPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.hadizadeh.positioning.modeleditor.controller.EditorContentController" spacing="20" style="-fx-padding: 10 0 0 0;">
+    <children>
+        <VBox fx:id="main_pane_left" GridPane.rowIndex="0" GridPane.columnIndex="0" minWidth="300.0" prefWidth="300.0"
+              alignment="TOP_LEFT">
+            <children>
+                <BorderedTitledPane title="%contentSelectLanguage" prefHeight="100.0" minHeight="100.0" maxHeight="100.0"
+                                    style="-fx-border-insets: 20 0 0 0;">
+                    <children>
+                        <AnchorPane>
+                            <children>
+                                <ComboBox fx:id="language_cb" layoutY="20.0" AnchorPane.leftAnchor="10"
+                                          AnchorPane.rightAnchor="90" visibleRowCount="5"/>
+                                <ImageView fx:id="copyLanguageIv" fitHeight="32.0" fitWidth="32.0" layoutY="18.0"
+                                           onMouseClicked="#actionCopyLanguage"
+                                           onMouseEntered="#actionStatusCopyLanguage"
+                                           onMouseExited="#actionStatusClear"
+                                           AnchorPane.rightAnchor="50">
+                                    <image>
+                                        <Image url="/res/img/copy.png"/>
+
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </ImageView>
+                                <ImageView fx:id="removeLanguageIv" fitHeight="32.0" fitWidth="32.0" layoutY="18.0"
+                                           onMouseClicked="#actionRemoveLanguage"
+                                           onMouseEntered="#actionStatusRemoveLanguage"
+                                           onMouseExited="#actionStatusClear"
+                                           AnchorPane.rightAnchor="10">
+                                    <image>
+                                        <Image url="/res/img/delete.png"/>
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </BorderedTitledPane>
+
+                <HBox prefHeight="60" alignment="BOTTOM_LEFT">
+                    <children>
+                        <ImageView fx:id="createContentIv" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#actionCreateNewContent"
+                                   onMouseEntered="#actionStatusCreateContent" onMouseExited="#actionStatusClear">
+                            <image>
+                                <Image url="/res/img/create.png"/>
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </ImageView>
+
+                        <ImageView fx:id="removeContentIv" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#actionRemoveContent"
+                                   onMouseEntered="#actionStatusRemoveContent" onMouseExited="#actionStatusClear">
+                            <image>
+                                <Image url="/res/img/delete.png"/>
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <ListView fx:id="contents_lv" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+
+
+        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0" HBox.hgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="120.0" prefWidth="120.0"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="40.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="40.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="40.0" vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints fx:id="createDiscardRc" prefHeight="0.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label text="%contentTitle"/>
+                <Label text="%contentDescription" GridPane.rowIndex="1"/>
+                <Label text="%contentUrl" GridPane.rowIndex="2"/>
+                <Label text="%contentMediaFiles" GridPane.rowIndex="3"/>
+                <Label text="%contentFullText" GridPane.rowIndex="4"/>
+
+                <TextField fx:id="title_et" GridPane.columnIndex="1" styleClass="content-text-field"/>
+                <TextField fx:id="description_et" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="content-text-field"/>
+                <TextField fx:id="url_et" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="content-text-field"/>
+
+                <BorderedTitledPane title="%contentMultimedia" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <padding>
+                        <Insets bottom="0.0" left="0.0" right="0.0"/>
+                    </padding>
+                    <children>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints prefHeight="110.0" minHeight="110.0" maxHeight="110.0"/>
+                                <RowConstraints prefHeight="110.0" minHeight="110.0" maxHeight="110.0"/>
+                                <RowConstraints prefHeight="110.0" minHeight="110.0" maxHeight="110.0"/>
+                                <RowConstraints prefHeight="40.0" minHeight="40.0" maxHeight="40.0"/>
+                            </rowConstraints>
+                            <children>
+                                <HBox spacing="5" alignment="CENTER_LEFT" styleClass="multimedia-box-line1">
+                                    <ImageView fx:id="removeImageIv" fitHeight="32.0" fitWidth="32.0"
+                                               onMouseClicked="#actionRemoveImage"
+                                               onMouseEntered="#actionStatusRemoveImage"
+                                               onMouseExited="#actionStatusClear" visible="false" >
+                                        <image>
+                                            <Image url="/res/img/delete.png"/>
+                                        </image>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND"/>
+                                        </cursor>
+                                    </ImageView>
+                                    <Label text="%contentImage"/>
+                                </HBox>
+                                <HBox spacing="5" alignment="CENTER_LEFT" GridPane.rowIndex="1"
+                                      styleClass="multimedia-box-line2">
+                                    <ImageView fx:id="removeVideoIv" fitHeight="32.0" fitWidth="32.0"
+                                               onMouseClicked="#actionRemoveVideo"
+                                               onMouseEntered="#actionStatusRemoveVideo"
+                                               onMouseExited="#actionStatusClear" visible="false">
+                                        <image>
+                                            <Image url="/res/img/delete.png"/>
+                                        </image>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND"/>
+                                        </cursor>
+                                    </ImageView>
+                                    <Label text="%contentVideo"/>
+                                </HBox>
+                                <HBox spacing="5" alignment="CENTER_LEFT" GridPane.rowIndex="2"
+                                      styleClass="multimedia-box-line1">
+                                    <ImageView fx:id="removeAudioIv" fitHeight="32.0" fitWidth="32.0"
+                                               onMouseClicked="#actionRemoveAudio"
+                                               onMouseEntered="#actionStatusRemoveAudio"
+                                               onMouseExited="#actionStatusClear" visible="false">
+                                        <image>
+                                            <Image url="/res/img/delete.png"/>
+                                        </image>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND"/>
+                                        </cursor>
+                                    </ImageView>
+                                    <Label text="%contentAudio"/>
+                                </HBox>
+
+                                <Pane GridPane.rowIndex="3" styleClass="multimedia-box-line2"/>
+
+                                <StackPane alignment="CENTER_LEFT" GridPane.columnIndex="1"
+                                           styleClass="multimedia-box-line1">
+                                    <children>
+                                        <ImageView fx:id="image_iv" fitHeight="100.0"
+                                                   fitWidth="100.0" pickOnBounds="true" preserveRatio="true"
+                                                   onMouseClicked="#actionShowImage" visible="false">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND"/>
+                                            </cursor>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+
+                                <StackPane alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                           styleClass="multimedia-box-line2">
+                                    <children>
+                                        <Label fx:id="play_video_lb" onMouseClicked="#actionPlayVideo"
+                                               text="%contentPlayVideo" textFill="#1500ff" underline="true"
+                                               visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND"/>
+                                            </cursor>
+                                        </Label>
+                                    </children>
+                                </StackPane>
+
+                                <StackPane alignment="CENTER_LEFT" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                           styleClass="multimedia-box-line1">
+                                    <children>
+                                        <Pane fx:id="player_group" maxHeight="32.0">
+                                            <children>
+                                                <ImageView fx:id="audio_play_iv" fitHeight="32.0"
+                                                           fitWidth="32.0"
+                                                           layoutX="7.0"
+                                                           layoutY="0.0" onMouseClicked="#audioBtnClicked"
+                                                           pickOnBounds="true"
+                                                           preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND"/>
+                                                    </cursor>
+                                                </ImageView>
+                                                <Slider fx:id="audio_slider_sb" layoutX="101.0" layoutY="8.0"
+                                                        prefHeight="17.0"
+                                                        prefWidth="190.0"/>
+                                                <Label fx:id="audio_player_minutes_played" layoutX="59.0"
+                                                       layoutY="5.0"
+                                                       text="00:00"/>
+                                                <Label fx:id="audio_player_minutes_total" layoutX="297.0"
+                                                       layoutY="5.0"
+                                                       text="00:00"/>
+                                            </children>
+                                        </Pane>
+                                    </children>
+                                </StackPane>
+                                <StackPane alignment="CENTER_RIGHT" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                           styleClass="multimedia-box-line2">
+                                    <children>
+                                        <ImageView fx:id="selectMediaFileIv" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+                                                   fitHeight="32.0"
+                                                   fitWidth="32.0" onMouseClicked="#actionSelectMediaFile"
+                                                   onMouseEntered="#actionStatusSelectMediaFile"
+                                                   onMouseExited="#actionStatusClear">
+                                            <image>
+                                                <Image url="/res/img/create.png"/>
+                                            </image>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND"/>
+                                            </cursor>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </GridPane>
+
+                    </children>
+                </BorderedTitledPane>
+
+                <TextArea fx:id="fulltext_et" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <HBox fx:id="create_content_btns_hb" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                      spacing="20" alignment="CENTER_LEFT">
+                    <children>
+                        <Button fx:id="add_content_btn" mnemonicParsing="false"
+                                onAction="#actionAddContent" text="%contentAddContent" prefWidth="250">
+                            <graphic>
+                                <ImageView>
+                                    <Image url="/res/img/create.png" requestedWidth="32" requestedHeight="32"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="discard_content_btn" mnemonicParsing="false"
+                                onAction="#actionDiscardContent" text="%contentDiscardContent" prefWidth="250">
+                            <graphic>
+                                <ImageView>
+                                    <Image url="/res/img/delete.png" requestedWidth="32" requestedHeight="32"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+
+            </children>
+        </GridPane>
+    </children>
+</HBox>

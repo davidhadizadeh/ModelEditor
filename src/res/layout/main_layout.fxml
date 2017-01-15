@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:id="rootGridPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0"
+          prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.hadizadeh.positioning.modeleditor.controller.Controller">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <MenuBar prefHeight="0.0" fx:id="mainMb">
+            <menus>
+                <Menu mnemonicParsing="true" text="%menuFile">
+                    <items>
+                        <MenuItem fx:id="menuNewMi" mnemonicParsing="false" onAction="#actionMenuNew" text="%menuNew"/>
+                        <MenuItem fx:id="menuOpenMi" mnemonicParsing="false" onAction="#actionMenuOpen"
+                                  text="%menuOpen"/>
+                        <MenuItem fx:id="menuSaveMi" mnemonicParsing="false" onAction="#actionMenuSave"
+                                  text="%menuSave"/>
+                        <MenuItem fx:id="menuSaveAsMi" mnemonicParsing="false" onAction="#actionMenuSaveAs"
+                                  text="%menuSaveAs"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="true" text="%menuView">
+                    <items>
+                        <MenuItem fx:id="menuZoomIn" mnemonicParsing="false" onAction="#actionMenuZoomIn"
+                                  text="%menuZoomIn"/>
+                        <MenuItem fx:id="menuZoomOut" mnemonicParsing="false" onAction="#actionMenuZoomOut"
+                                  text="%menuZoomOut"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="true" text="%menuExtras">
+                    <items>
+                        <MenuItem fx:id="menuUpload" mnemonicParsing="false" onAction="#actionMenuUpload"
+                                  text="%menuUpload"/>
+                        <MenuItem fx:id="menuDowload" mnemonicParsing="false" onAction="#actionMenuDownload"
+                                  text="%menuDownload"/>
+                        <MenuItem fx:id="menuManageProjects" mnemonicParsing="false" onAction="#actionMenuManageProjects"
+                                  text="%menuManageProjects"/>
+                        <MenuItem fx:id="menuSettings" mnemonicParsing="false" onAction="#actionMenuSettings"
+                                  text="%menuSettings"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <StackPane GridPane.rowIndex="1" alignment="CENTER">
+            <children>
+                <TabPane fx:id="mainTp" tabClosingPolicy="UNAVAILABLE" AnchorPane.topAnchor="0"
+                         AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+                    <tabs>
+                        <Tab>
+                            <graphic>
+                                <HBox prefWidth="200" alignment="CENTER_LEFT" spacing="10">
+                                    <children>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="/res/img/room_model.png"/>
+                                            </image>
+                                        </ImageView>
+                                        <Label text="%tabTitleRoomModel"/>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <fx:include fx:id="roomModel" source="/res/layout/room_model_layout.fxml"/>
+                            </content>
+                        </Tab>
+                        <Tab>
+                            <graphic>
+                                <HBox prefWidth="200" alignment="CENTER_LEFT" spacing="10">
+                                    <children>
+                                        <ImageView>
+                                            <image>
+                                                <Image url="/res/img/manage_content.png"/>
+                                            </image>
+                                        </ImageView>
+                                        <Label text="%tabTitleManageContent"/>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <fx:include fx:id="editorContent" source="/res/layout/content_layout.fxml"/>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+
+
+                <VBox fx:id="loadingVb" prefHeight="250.0" prefWidth="400.0" maxHeight="250.0" maxWidth="400.0"
+                      spacing="20"
+                      alignment="CENTER" styleClass="loading-box" visible="false">
+                    <children>
+                        <Label fx:id="loadingTextLb" text="" styleClass="loading-text"/>
+                        <ProgressBar fx:id="loadingProgressBar" prefWidth="200"/>
+                        <Label fx:id="loadingProgressTextLb" text="" visible="false"/>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+        <AnchorPane GridPane.rowIndex="2" styleClass="status-label">
+            <children>
+                <Label fx:id="statusLabel" text="" AnchorPane.rightAnchor="10"/>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>

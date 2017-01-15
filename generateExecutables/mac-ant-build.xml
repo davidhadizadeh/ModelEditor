@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Room-Model-Editor" basedir="mac">        
+
+    <taskdef name="bundleapp"
+             classname="com.oracle.appbundler.AppBundlerTask"   
+             classpath="appbundler-1.0.jar" />
+
+    <target name="bundle-Room-Model-Editor">
+        <bundleapp outputdirectory="../installer/Mac"
+            name="Room-Model-Editor"
+            displayname="Room-Model-Editor"
+            identifier="de.hadizadeh.positioning.modeleditor.Main"
+            mainclassname="de.hadizadeh.positioning.modeleditor.Main">
+            <classpath file="../../out/artifacts/RoomModelEditor/Room-Model-Editor.jar" />
+        </bundleapp>
+    </target>
+
+</project>

@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Room-Model-Editor">
+    <output-path>$PROJECT_DIR$/out/artifacts/RoomModelEditor</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="de.hadizadeh.positioning.modeleditor.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="RoomModelEditor" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Room-Model-Editor.jar">
+        <element id="module-output" name="ModelEditor" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/../IndoorPositioningLibrary/out/indoor-positioning-1.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/../IndoorPositioningContentLibrary/out/indoor_positioning_content_1_0/indoor-positioning-content-1.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/../IndoorPositioningModelLibrary/out/artifacts/indoor_positioning_model_1_0/indoor-positioning-model-1.0.jar" path-in-jar="/" />
+      </element>
+    </root>
+  </artifact>
+</component>
